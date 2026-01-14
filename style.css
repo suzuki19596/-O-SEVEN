@@ -2,6 +2,12 @@
    O-SEVEN Corporate Website Styles
    =================================== */
 
+/* ===================================
+   ★★★ DESKTOP STYLES (PC版) ★★★
+   以下はPC版（1025px以上）の固定スタイルです
+   レスポンシブ対応時は変更しないでください
+   =================================== */
+
 /* Reset & Base */
 *,
 *::before,
@@ -306,57 +312,58 @@ img {
     display: flex;
     width: 100%;
     height: 100%;
+    align-items: stretch;
 }
 
 .hero-text {
     width: 22%;
-    min-width: 200px;
+    min-width: 180px;
     background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px;
+    padding: 40px 15px;
     position: relative;
+    flex-shrink: 0;
 }
 
 .hero-logo-img {
-    max-width: 300px;
+    max-width: 90%;
+    width: auto;
     height: auto;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     filter: invert(1);
 }
 
 .hero-catchcopy {
     font-family: 'Shippori Mincho', serif;
-    font-size: 28px;
+    font-size: clamp(16px, 2vw, 28px);
     font-weight: 600;
     color: #333;
-    line-height: 2.2;
+    line-height: 2;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-align: center;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     opacity: 0;
     animation: fadeInUp 1s ease 0.5s forwards;
+    max-height: 60vh;
+    overflow: hidden;
 }
 
 .hero-image {
     width: 78%;
+    height: 100%;
     position: relative;
     overflow: hidden;
-    padding-top: 25%;
-    background: #fff;
 }
 
 .hero-image img {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    height: 75%;
+    height: 100%;
     object-fit: cover;
-    object-position: center bottom;
+    object-position: center;
 }
 
 .hero-scroll {
@@ -393,10 +400,62 @@ img {
     100% { opacity: 1; transform: scaleY(1); }
 }
 
+/* ===================================
+   ★ Hero レスポンシブ（後で移動予定）
+   =================================== */
+/* Hero responsive - Large tablets */
+@media (max-width: 1200px) {
+    .hero-text {
+        width: 25%;
+        min-width: 160px;
+        padding: 30px 12px;
+    }
+
+    .hero-logo-img {
+        max-width: 85%;
+        margin-bottom: 20px;
+    }
+
+    .hero-catchcopy {
+        font-size: clamp(14px, 1.8vw, 24px);
+        letter-spacing: 0.08em;
+        line-height: 1.8;
+    }
+
+    .hero-image {
+        width: 75%;
+    }
+}
+
+/* Hero responsive - Tablets */
+@media (max-width: 992px) {
+    .hero-text {
+        width: 28%;
+        min-width: 140px;
+        padding: 25px 10px;
+    }
+
+    .hero-logo-img {
+        max-width: 80%;
+        margin-bottom: 15px;
+    }
+
+    .hero-catchcopy {
+        font-size: clamp(12px, 1.6vw, 20px);
+        letter-spacing: 0.06em;
+        line-height: 1.7;
+    }
+
+    .hero-image {
+        width: 72%;
+    }
+}
+
+/* Hero responsive - Mobile */
 @media (max-width: 768px) {
     .hero {
         height: auto;
-        min-height: 100vh;
+        min-height: unset;
     }
 
     .hero-inner {
@@ -405,23 +464,60 @@ img {
 
     .hero-text {
         width: 100%;
+        min-width: unset;
         padding: 100px 30px 40px;
         order: 1;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
     }
 
-    .hero-title-main {
-        font-size: 36px;
+    .hero-logo-img {
+        max-width: 200px;
+        margin-bottom: 0;
+    }
+
+    .hero-catchcopy {
+        font-size: 18px;
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+        max-height: unset;
+        letter-spacing: 0.05em;
+        line-height: 1.8;
     }
 
     .hero-image {
         width: 100%;
-        height: 50vh;
+        height: auto;
         order: 2;
     }
 
+    .hero-image img {
+        width: 100%;
+        height: auto;
+        object-fit: unset;
+        display: block;
+    }
+
     .hero-scroll {
-        left: 50%;
-        bottom: 10px;
+        display: none;
+    }
+}
+
+/* Hero responsive - Small mobile */
+@media (max-width: 480px) {
+    .hero-text {
+        padding: 90px 20px 30px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero-logo-img {
+        max-width: 150px;
+    }
+
+    .hero-catchcopy {
+        font-size: 16px;
     }
 }
 
@@ -1461,7 +1557,13 @@ img {
 }
 
 /* ===================================
-   Responsive
+   ★★★ RESPONSIVE STYLES (レスポンシブ) ★★★
+   以下はレスポンシブ対応用のスタイルです
+   PC版を変更せずにこのセクション内で調整してください
+   =================================== */
+
+/* ===================================
+   Tablet (1024px以下)
    =================================== */
 @media (max-width: 1024px) {
     .about-content,
@@ -1495,6 +1597,9 @@ img {
     }
 }
 
+/* ===================================
+   Mobile (768px以下)
+   =================================== */
 @media (max-width: 768px) {
     :root {
         --header-height: 60px;
@@ -1983,3 +2088,21 @@ img {
         display: none !important;
     }
 }
+
+/* ===================================
+   ★★★ 追加レスポンシブスタイル ★★★
+   新しいレスポンシブ調整はここに追加してください
+   =================================== */
+
+/* Small Mobile (480px以下) */
+@media (max-width: 480px) {
+    /* 追加のスマホ用スタイルをここに記述 */
+}
+
+/* ===================================
+   END OF STYLESHEET
+   PC版: 1025px以上
+   Tablet: 769px〜1024px
+   Mobile: 481px〜768px
+   Small Mobile: 480px以下
+   =================================== */
