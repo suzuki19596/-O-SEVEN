@@ -336,11 +336,24 @@ img {
 }
 
 .hero-logo-img {
-    max-width: 90%;
-    width: auto;
-    height: auto;
+    width: 80px;
+    height: 80px;
     margin-bottom: 30px;
-    filter: invert(1);
+    object-fit: cover;
+    object-position: left center;
+    opacity: 0;
+    animation: logoFadeIn 1s ease 0.2s forwards;
+}
+
+@keyframes logoFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-catchcopy {
@@ -352,8 +365,6 @@ img {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     letter-spacing: 0.1em;
-    opacity: 0;
-    animation: fadeInUp 1s ease 0.5s forwards;
     max-height: 60vh;
     overflow: hidden;
 }
@@ -361,10 +372,29 @@ img {
 .catchcopy-line1,
 .catchcopy-line2 {
     display: block;
+    opacity: 0;
+}
+
+.catchcopy-line1 {
+    animation: brushReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
 }
 
 .catchcopy-line2 {
     margin-top: 4em;
+    animation: brushReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1s forwards;
+}
+
+@keyframes brushReveal {
+    0% {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
+    }
 }
 
 .hero-image {
