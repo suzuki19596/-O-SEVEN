@@ -129,10 +129,10 @@ function initHeaderScroll() {
     window.addEventListener('scroll', function() {
         const currentScrollY = window.scrollY;
 
-        if (currentScrollY > 100) {
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        if (currentScrollY > 80) {
+            header.classList.add('scrolled');
         } else {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            header.classList.remove('scrolled');
         }
 
         lastScrollY = currentScrollY;
